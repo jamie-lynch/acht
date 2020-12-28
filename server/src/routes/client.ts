@@ -8,7 +8,7 @@ import { sub } from "date-fns";
 const router = Router();
 
 router.get("/", (req: Request, res: Response) => {
-  const t = sub(new Date(), { minutes: 30 });
+  const t = sub(new Date(), { minutes: 1 });
   const options = req.query.active
     ? { where: { lastActive: MoreThan(t.getTime()) } }
     : {};
@@ -67,18 +67,6 @@ router.put("/heartbeat/:id", (req: Request, res: Response) => {
         return res.status(404).send("No client was found with that id");
       } else {
         return res.status(500).send(err.message);
-      }
-    });
-});
-
-router.delete("/:id", (req: Request, res: Response) => {
-  getRepository(Client)
-    .delete({ uuid: req.params.id })
-    .then((result) => {
-      if (result.affected > 0) {
-        return res.send("ok");
-      } else {
-        return res.status(404).send("No client was found with that id");
       }
     });
 });
