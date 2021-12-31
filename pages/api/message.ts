@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import type { Message } from "../../@types/Message";
 import { messages as fakeMessages } from "../../fixtures/messages";
-import { randomUUID } from "crypto";
+import { uuid } from "uuidv4";
 
 const messages: Message[] = fakeMessages;
 
@@ -30,7 +30,7 @@ const newMessage = (
   res: NextApiResponse<string | Message[]>
 ) => {
   const message = {
-    id: randomUUID(),
+    id: uuid(),
     timestamp: Date.now(),
     author: req.body.author,
     message: req.body.message,
