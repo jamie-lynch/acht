@@ -1,4 +1,5 @@
 import { Message as MessageType } from "../../@types/Message";
+import { formatDate } from "../../utils/datetime";
 import styles from "./Message.module.css";
 
 export const Message = ({ timestamp, author, message }: MessageType) => (
@@ -8,8 +9,3 @@ export const Message = ({ timestamp, author, message }: MessageType) => (
     <div className={styles.time}>{formatDate(timestamp)}</div>
   </li>
 );
-
-const formatDate = (timestamp: number) => {
-  const t = new Date(timestamp);
-  return `${t.getHours()}:${t.getMinutes()}`;
-};
