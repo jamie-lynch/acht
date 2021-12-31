@@ -29,6 +29,11 @@ export const Messages = () => {
 
   useEffect(() => {
     fetchMessages();
+    let interval = setInterval(() => {
+      fetchMessages();
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, [fetchMessages]);
 
   return (
