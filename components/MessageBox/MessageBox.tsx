@@ -12,12 +12,12 @@ type MessageBoxProps = {
 export const MessageBox = ({ messages, error }: MessageBoxProps) => {
   return (
     <Card>
+      <ErrorMessage message={error} />
       <ul className={styles.list}>
         {messages.map((message) => (
           <Message key={message.id} {...message} />
         ))}
       </ul>
-      <ErrorMessage message={error} />
     </Card>
   );
 };
