@@ -3,6 +3,7 @@ import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { ErrorMessage } from "../ErrorMessage";
 import { TextArea } from "../TextArea";
 import { TextInput } from "../TextInput";
+import { Button } from "../Button";
 
 type SendMessageProps = {
   fetchMessages: () => void;
@@ -74,7 +75,7 @@ export const SendMessage = ({ fetchMessages }: SendMessageProps) => {
         value={message}
         rows={5}
       />
-      <button onClick={handleSend}>Send</button>
+      <Button onClick={handleSend}>Send</Button>
       <ErrorMessage message={error} />
     </Card>
   );
