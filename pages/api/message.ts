@@ -29,13 +29,19 @@ const newMessage = (
   req: NextApiRequest,
   res: NextApiResponse<string | Message[]>
 ) => {
-  const message = {
+  const { author, message } = req.body;
+
+  if (!author || !message) {
+    return res.status(422).send("Author and message values must be set");
+  }
+
+  const newMessage = {
     id: v4(),
     timestamp: Date.now(),
     author: req.body.author,
     message: req.body.message,
   };
 
-  messages.push(message);
+  messages.push(newMessage);
   return res.status(200).send("Message sent successfully");
 };
