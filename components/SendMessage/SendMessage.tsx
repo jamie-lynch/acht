@@ -75,7 +75,13 @@ export const SendMessage = ({ fetchMessages }: SendMessageProps) => {
         value={message}
         rows={5}
       />
-      <Button onClick={handleSend}>Send</Button>
+      <Button
+        onClick={handleSend}
+        disabled={!author || !message}
+        disabledTip="Author and message must be set"
+      >
+        Send
+      </Button>
       <ErrorMessage message={error} />
     </Card>
   );

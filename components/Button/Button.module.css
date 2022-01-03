@@ -1,0 +1,31 @@
+.button {
+  position: relative;
+}
+
+.button .tooltip {
+  visibility: hidden;
+  width: 230px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 115%;
+}
+
+.button .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+.button:hover:disabled .tooltip {
+  visibility: visible;
+}
