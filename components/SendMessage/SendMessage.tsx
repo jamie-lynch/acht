@@ -1,6 +1,6 @@
 import styles from "./SendMessage.module.css";
 import { Card } from "../Card";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { ErrorMessage } from "../ErrorMessage";
 
 type SendMessageProps = {
@@ -49,6 +49,13 @@ export const SendMessage = ({ fetchMessages }: SendMessageProps) => {
     setMessage(e.currentTarget.value);
   };
 
+  const handleMessageInputKeyDown = (event: KeyboardEvent) => {
+    if ((event.ctrlKey || event.metaKey) && event.code === "Enter") {
+      event.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <Card>
       <div className={styles.input}>
@@ -61,6 +68,7 @@ export const SendMessage = ({ fetchMessages }: SendMessageProps) => {
           id="message"
           placeholder="Enter you message here"
           onChange={handleMessageChange}
+          onKeyDown={handleMessageInputKeyDown}
           value={message}
           rows={5}
         ></textarea>
