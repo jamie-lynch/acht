@@ -1,7 +1,13 @@
 import { ButtonHTMLAttributes } from "react";
+import styles from "./Button.module.css";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  disabledTip: string;
+}
 
-export const Button = ({ children, ...props }: ButtonProps) => (
-  <button {...props}>{children}</button>
+export const Button = ({ children, disabledTip, ...props }: ButtonProps) => (
+  <button className={styles.button} {...props}>
+    {children}
+    <span className={styles.tooltip}>{disabledTip}</span>
+  </button>
 );
