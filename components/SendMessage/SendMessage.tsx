@@ -1,7 +1,8 @@
-import styles from "./SendMessage.module.css";
 import { Card } from "../Card";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { ErrorMessage } from "../ErrorMessage";
+import { TextArea } from "../TextArea";
+import { TextInput } from "../TextInput";
 
 type SendMessageProps = {
   fetchMessages: () => void;
@@ -58,21 +59,21 @@ export const SendMessage = ({ fetchMessages }: SendMessageProps) => {
 
   return (
     <Card>
-      <div className={styles.input}>
-        <label htmlFor="name">Name</label>
-        <input id="name" onChange={handleAuthorChange} value={author}></input>
-      </div>
-      <div className={styles.input}>
-        <label htmlFor="message">Message</label>
-        <textarea
-          id="message"
-          placeholder="Enter you message here"
-          onChange={handleMessageChange}
-          onKeyDown={handleMessageInputKeyDown}
-          value={message}
-          rows={5}
-        ></textarea>
-      </div>
+      <TextInput
+        id="name"
+        label="Name"
+        onChange={handleAuthorChange}
+        value={author}
+      />
+      <TextArea
+        id="message"
+        label="Message"
+        placeholder="Enter you message here"
+        onChange={handleMessageChange}
+        onKeyDown={handleMessageInputKeyDown}
+        value={message}
+        rows={5}
+      />
       <button onClick={handleSend}>Send</button>
       <ErrorMessage message={error} />
     </Card>

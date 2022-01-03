@@ -1,0 +1,13 @@
+.input {
+  padding: 0.75rem 0;
+  width: 100%;
+}
+
+.input label {
+  display: block;
+  padding: 0 0 0.35rem 0;
+}
+
+.input * {
+  width: 100%;
+}
